@@ -1,4 +1,4 @@
-package PageObject;
+package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -26,39 +26,42 @@ public class CustomerDataPage {
     }
 
     // метод - ввести имя:
-    public CustomerDataPage enterName(String name){
+    public void enterName(String name){
         driver.findElement(nameField).sendKeys(name);
-        return this;
     }
     // метод - ввести фамилию:
-    public CustomerDataPage enterSurname(String surname){
+    public void enterSurname(String surname){
         driver.findElement(surnameField).sendKeys(surname);
-        return this;
     }
     // метод - ввести адрес:
-    public CustomerDataPage enterDeliveryAddress(String deliveryAddress){
+    public void enterDeliveryAddress(String deliveryAddress){
         driver.findElement(deliveryAddressField).sendKeys(deliveryAddress);
-        return this;
     }
     // метод - ввести метро:
-    public CustomerDataPage enterMetroStation(String metroStation){
+    public void enterMetroStation(String metroStation){
         driver.findElement(metroStationField).sendKeys(metroStation);
-        return this;
     }
     // метод - кликнуть на метро в выпадающем списке:
-    public CustomerDataPage clickDropdownlist(){
+    public void clickDropdownlist(){
         driver.findElement(dropdownlist).click();
-        return this;
     }
     // метод - ввести телефон
-    public CustomerDataPage enterPhoneNumber(String phoneNumber){
+    public void enterPhoneNumber(String phoneNumber){
         driver.findElement(phoneNumberField).sendKeys(phoneNumber);
-        return this;
     }
     // метод - нажать на кнопку "Продолжить":
-    public CustomerDataPage clickContinueBtn(){
+    public void clickContinueBtn(){
         driver.findElement(continueBtn).click();
-        return this;
+    }
+    // объединенный метод заполнения данных о клиенте
+    public void enterCustomerData(String name, String surname, String deliveryAddress, String metroStation, String phoneNumber){
+        enterName(name);
+        enterSurname(surname);
+        enterDeliveryAddress(deliveryAddress);
+        enterMetroStation(metroStation);
+        clickDropdownlist();
+        enterPhoneNumber(phoneNumber);
+        clickContinueBtn();
     }
 
 

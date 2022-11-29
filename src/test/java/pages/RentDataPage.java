@@ -1,4 +1,4 @@
-package PageObject;
+package pages;
 
 
 import org.openqa.selenium.By;
@@ -27,35 +27,40 @@ public class RentDataPage {
     }
 
     // метод - ввести дату доставки
-    public RentDataPage enterDeliveryData(String deliveryData){
+    public void enterDeliveryData(String deliveryData){
         driver.findElement(deliveryDateField).sendKeys(deliveryData + Keys.ENTER);
-        return this;
     }
     // метод - кликнуть на поле период аренды для вызова выпадающего списка
-    public RentDataPage clickRentPeriodField(){
+    public void clickRentPeriodField(){
         driver.findElement(rentPeriodField).click();
-        return this;
     }
     // метод - выбрать период аренды
-    public RentDataPage clickRentPeriod(int rentPeriodVariant){
+    public void clickRentPeriod(int rentPeriodVariant){
         driver.findElement(By.xpath(".//div[@class='Dropdown-option']" + "[" + rentPeriodVariant + "]")).click();
-        return this;
     }
     // метод - выбрать цвет самоката
-    public RentDataPage chooseColor(int colorVariant){
+    public void chooseColor(int colorVariant){
         driver.findElement(By.xpath(".//label[@class='Checkbox_Label__3wxSf'][" + colorVariant + "]/input")).click();
-        return this;
     }
     // метод - ввести комментарий
-    public RentDataPage enterComment(String comment){
+    public void enterComment(String comment){
         driver.findElement(commentField).sendKeys(comment);
-        return this;
     }
     // метод - нажать кнопку "Заказать":
-    public RentDataPage order(){
+    public void order(){
         driver.findElement(orderBtn).click();
+    }
+    // объединенный метод заполнения данных об аренде
+    public RentDataPage enterRentData(String deliveryData, int rentPeriodVariant, int colorVariant, String comment){
+        enterDeliveryData(deliveryData);
+        clickRentPeriodField();
+        clickRentPeriod(rentPeriodVariant);
+        chooseColor(colorVariant);
+        enterComment(comment);
+        order();
         return this;
     }
+
     // метод - нажать кнопку подтверждения заказа:
     public RentDataPage confirmOrder(){
         driver.findElement(confirmOrderBtn).click();
