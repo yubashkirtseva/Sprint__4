@@ -16,69 +16,69 @@ public class QuestionsTests {
     private WebDriver driver;
 
     /*
-    1-ый сценарий
-    Используется браузер Google Chrome
-    Шаги
-    1. перейти на сайт https://qa-scooter.praktikum-services.ru/
-    2. перейти к разделу Вопросы о важном
-    3. кликнуть на первый вопрос
-    4. проверить, что текст в выпадающем списке соответствует ожидаемому
+    1-С‹Р№ СЃС†РµРЅР°СЂРёР№
+    РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ Р±СЂР°СѓР·РµСЂ Google Chrome
+    РЁР°РіРё
+    1. РїРµСЂРµР№С‚Рё РЅР° СЃР°Р№С‚ https://qa-scooter.praktikum-services.ru/
+    2. РїРµСЂРµР№С‚Рё Рє СЂР°Р·РґРµР»Сѓ Р’РѕРїСЂРѕСЃС‹ Рѕ РІР°Р¶РЅРѕРј
+    3. РєР»РёРєРЅСѓС‚СЊ РЅР° РїРµСЂРІС‹Р№ РІРѕРїСЂРѕСЃ
+    4. РїСЂРѕРІРµСЂРёС‚СЊ, С‡С‚Рѕ С‚РµРєСЃС‚ РІ РІС‹РїР°РґР°СЋС‰РµРј СЃРїРёСЃРєРµ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ РѕР¶РёРґР°РµРјРѕРјСѓ
     */
 
     @Test
     public void checkTextFromImportantQuestionsSectionFirstAnswerChrome() {
-        //настройка браузера
+        //РЅР°СЃС‚СЂРѕР№РєР° Р±СЂР°СѓР·РµСЂР°
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        // переход на страницу тестового приложения
+        // РїРµСЂРµС…РѕРґ РЅР° СЃС‚СЂР°РЅРёС†Сѓ С‚РµСЃС‚РѕРІРѕРіРѕ РїСЂРёР»РѕР¶РµРЅРёСЏ
         driver.get("https://qa-scooter.praktikum-services.ru/");
-        // создать объект главной страницы раздела с вопросами
+        // СЃРѕР·РґР°С‚СЊ РѕР±СЉРµРєС‚ РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†С‹ СЂР°Р·РґРµР»Р° СЃ РІРѕРїСЂРѕСЃР°РјРё
         MainPageImportantQuestionsSection objMainPage = new MainPageImportantQuestionsSection(driver);
-        // вызвать методы
+        // РІС‹Р·РІР°С‚СЊ РјРµС‚РѕРґС‹
         objMainPage.scrollToQuestions()
                 .clickOnFirstQuestion()
-                .waitForFirstAnswer("Сутки — 400 рублей. Оплата курьеру — наличными или картой.");
-        // задать ожидаемый результат
-        String expectedTextFromFirstAnswer = "Сутки — 400 рублей. Оплата курьеру — наличными или картой.";
-        // сравнить ожидаемый и актуальный результат
-        Assert.assertEquals("Текст не совпадает", expectedTextFromFirstAnswer, objMainPage.getTextFromFirstAnswer());
+                .waitForFirstAnswer("РЎСѓС‚РєРё вЂ” 400 СЂСѓР±Р»РµР№. РћРїР»Р°С‚Р° РєСѓСЂСЊРµСЂСѓ вЂ” РЅР°Р»РёС‡РЅС‹РјРё РёР»Рё РєР°СЂС‚РѕР№.");
+        // Р·Р°РґР°С‚СЊ РѕР¶РёРґР°РµРјС‹Р№ СЂРµР·СѓР»СЊС‚Р°С‚
+        String expectedTextFromFirstAnswer = "РЎСѓС‚РєРё вЂ” 400 СЂСѓР±Р»РµР№. РћРїР»Р°С‚Р° РєСѓСЂСЊРµСЂСѓ вЂ” РЅР°Р»РёС‡РЅС‹РјРё РёР»Рё РєР°СЂС‚РѕР№.";
+        // СЃСЂР°РІРЅРёС‚СЊ РѕР¶РёРґР°РµРјС‹Р№ Рё Р°РєС‚СѓР°Р»СЊРЅС‹Р№ СЂРµР·СѓР»СЊС‚Р°С‚
+        Assert.assertEquals("РўРµРєСЃС‚ РЅРµ СЃРѕРІРїР°РґР°РµС‚", expectedTextFromFirstAnswer, objMainPage.getTextFromFirstAnswer());
     }
 
     /*
-    2-ой сценарий
-    Используется браузер Mozilla Firefox
-    Шаги
-    1. перейти на сайт https://qa-scooter.praktikum-services.ru/
-    2. перейти к разделу Вопросы о важном
-    3. кликнуть на шестой вопрос
-    4. проверить, что текст в выпадающем списке соответствует ожидаемому
+    2-РѕР№ СЃС†РµРЅР°СЂРёР№
+    РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ Р±СЂР°СѓР·РµСЂ Mozilla Firefox
+    РЁР°РіРё
+    1. РїРµСЂРµР№С‚Рё РЅР° СЃР°Р№С‚ https://qa-scooter.praktikum-services.ru/
+    2. РїРµСЂРµР№С‚Рё Рє СЂР°Р·РґРµР»Сѓ Р’РѕРїСЂРѕСЃС‹ Рѕ РІР°Р¶РЅРѕРј
+    3. РєР»РёРєРЅСѓС‚СЊ РЅР° С€РµСЃС‚РѕР№ РІРѕРїСЂРѕСЃ
+    4. РїСЂРѕРІРµСЂРёС‚СЊ, С‡С‚Рѕ С‚РµРєСЃС‚ РІ РІС‹РїР°РґР°СЋС‰РµРј СЃРїРёСЃРєРµ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ РѕР¶РёРґР°РµРјРѕРјСѓ
     */
 
     @Test
     public void checkTextFromImportantQuestionsSectionSixthAnswerFirefox() {
-        //настройка браузера
+        //РЅР°СЃС‚СЂРѕР№РєР° Р±СЂР°СѓР·РµСЂР°
         WebDriverManager.firefoxdriver().setup();
         driver = new FirefoxDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        // переход на страницу тестового приложения
+        // РїРµСЂРµС…РѕРґ РЅР° СЃС‚СЂР°РЅРёС†Сѓ С‚РµСЃС‚РѕРІРѕРіРѕ РїСЂРёР»РѕР¶РµРЅРёСЏ
         driver.get("https://qa-scooter.praktikum-services.ru/");
-        // создать объект главной страницы раздела с вопросами
+        // СЃРѕР·РґР°С‚СЊ РѕР±СЉРµРєС‚ РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†С‹ СЂР°Р·РґРµР»Р° СЃ РІРѕРїСЂРѕСЃР°РјРё
         MainPageImportantQuestionsSection objMainPage = new MainPageImportantQuestionsSection(driver);
-        // вызвать методы
+        // РІС‹Р·РІР°С‚СЊ РјРµС‚РѕРґС‹
         objMainPage.scrollToQuestions()
                 .clickOnSixthQuestion();
-        // задать ожидаемый результат
-        String expectedTextFromSixthAnswer = "Самокат приезжает к вам с полной зарядкой. Этого хватает на восемь суток — даже если будете кататься без передышек и во сне. Зарядка не понадобится.";
-        // сравнить ожидаемый и актуальный результат
-        Assert.assertEquals("Текст не совпадает", expectedTextFromSixthAnswer, objMainPage.getTextFromSixthAnswer());
+        // Р·Р°РґР°С‚СЊ РѕР¶РёРґР°РµРјС‹Р№ СЂРµР·СѓР»СЊС‚Р°С‚
+        String expectedTextFromSixthAnswer = "РЎР°РјРѕРєР°С‚ РїСЂРёРµР·Р¶Р°РµС‚ Рє РІР°Рј СЃ РїРѕР»РЅРѕР№ Р·Р°СЂСЏРґРєРѕР№. Р­С‚РѕРіРѕ С…РІР°С‚Р°РµС‚ РЅР° РІРѕСЃРµРјСЊ СЃСѓС‚РѕРє вЂ” РґР°Р¶Рµ РµСЃР»Рё Р±СѓРґРµС‚Рµ РєР°С‚Р°С‚СЊСЃСЏ Р±РµР· РїРµСЂРµРґС‹С€РµРє Рё РІРѕ СЃРЅРµ. Р—Р°СЂСЏРґРєР° РЅРµ РїРѕРЅР°РґРѕР±РёС‚СЃСЏ.";
+        // СЃСЂР°РІРЅРёС‚СЊ РѕР¶РёРґР°РµРјС‹Р№ Рё Р°РєС‚СѓР°Р»СЊРЅС‹Р№ СЂРµР·СѓР»СЊС‚Р°С‚
+        Assert.assertEquals("РўРµРєСЃС‚ РЅРµ СЃРѕРІРїР°РґР°РµС‚", expectedTextFromSixthAnswer, objMainPage.getTextFromSixthAnswer());
     }
 
-    // закрыть браузер после теста
+    // Р·Р°РєСЂС‹С‚СЊ Р±СЂР°СѓР·РµСЂ РїРѕСЃР»Рµ С‚РµСЃС‚Р°
     @After
     public void tearDown(){
         driver.quit();

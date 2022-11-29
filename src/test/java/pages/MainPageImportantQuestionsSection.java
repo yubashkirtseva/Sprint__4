@@ -11,46 +11,46 @@ import java.time.Duration;
 
 public class MainPageImportantQuestionsSection {
     private WebDriver driver;
-    // локатор первого вопроса в списке "Вопросы о важном":
+    // Р»РѕРєР°С‚РѕСЂ РїРµСЂРІРѕРіРѕ РІРѕРїСЂРѕСЃР° РІ СЃРїРёСЃРєРµ "Р’РѕРїСЂРѕСЃС‹ Рѕ РІР°Р¶РЅРѕРј":
     private By firstQuestion = By.xpath(".//div[@id='accordion__heading-0']");
-    // локатор первого ответа в списке "Вопросы о важном":
+    // Р»РѕРєР°С‚РѕСЂ РїРµСЂРІРѕРіРѕ РѕС‚РІРµС‚Р° РІ СЃРїРёСЃРєРµ "Р’РѕРїСЂРѕСЃС‹ Рѕ РІР°Р¶РЅРѕРј":
     private By firstAnswer = By.xpath(".//div[@id='accordion__panel-0']/p");
-    // локатор шестого вопроса в списке "Вопросы о важном":
+    // Р»РѕРєР°С‚РѕСЂ С€РµСЃС‚РѕРіРѕ РІРѕРїСЂРѕСЃР° РІ СЃРїРёСЃРєРµ "Р’РѕРїСЂРѕСЃС‹ Рѕ РІР°Р¶РЅРѕРј":
     private By sixthQuestion = By.xpath(".//div[@id='accordion__heading-5']");
-    // локатор шестого ответа в списке "Вопросы о важном":
+    // Р»РѕРєР°С‚РѕСЂ С€РµСЃС‚РѕРіРѕ РѕС‚РІРµС‚Р° РІ СЃРїРёСЃРєРµ "Р’РѕРїСЂРѕСЃС‹ Рѕ РІР°Р¶РЅРѕРј":
     private By sixthAnswer = By.xpath(".//div[@id='accordion__panel-5']/p");
-    // конструктор класса:
+    // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°:
     public MainPageImportantQuestionsSection(WebDriver driver){
         this.driver = driver;
     }
-    // метод - проскролить страницу до раздела "Вопросы о важном":
+    // РјРµС‚РѕРґ - РїСЂРѕСЃРєСЂРѕР»РёС‚СЊ СЃС‚СЂР°РЅРёС†Сѓ РґРѕ СЂР°Р·РґРµР»Р° "Р’РѕРїСЂРѕСЃС‹ Рѕ РІР°Р¶РЅРѕРј":
     public MainPageImportantQuestionsSection scrollToQuestions(){
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        WebElement importantQuestionsSection = driver.findElement(By.xpath(".//div[text()='Вопросы о важном']"));
+        WebElement importantQuestionsSection = driver.findElement(By.xpath(".//div[text()='Р’РѕРїСЂРѕСЃС‹ Рѕ РІР°Р¶РЅРѕРј']"));
         js.executeScript("arguments[0].scrollIntoView();", importantQuestionsSection);
         return this;
     }
-    // метод - кликнуть по первому вопросу:
+    // РјРµС‚РѕРґ - РєР»РёРєРЅСѓС‚СЊ РїРѕ РїРµСЂРІРѕРјСѓ РІРѕРїСЂРѕСЃСѓ:
     public MainPageImportantQuestionsSection clickOnFirstQuestion(){
         driver.findElement(firstQuestion).click();
         return this;
     }
-    // метод - получить текст первого ответа:
+    // РјРµС‚РѕРґ - РїРѕР»СѓС‡РёС‚СЊ С‚РµРєСЃС‚ РїРµСЂРІРѕРіРѕ РѕС‚РІРµС‚Р°:
     public String getTextFromFirstAnswer(){
         String actualTextFromFirstAnswer = driver.findElement(firstAnswer).getText();
         return actualTextFromFirstAnswer;
     }
-    // метод - кликнуть по шестому вопросу:
+    // РјРµС‚РѕРґ - РєР»РёРєРЅСѓС‚СЊ РїРѕ С€РµСЃС‚РѕРјСѓ РІРѕРїСЂРѕСЃСѓ:
     public MainPageImportantQuestionsSection clickOnSixthQuestion(){
         driver.findElement(sixthQuestion).click();
         return this;
     }
-    // метод - получить текст шестого ответа:
+    // РјРµС‚РѕРґ - РїРѕР»СѓС‡РёС‚СЊ С‚РµРєСЃС‚ С€РµСЃС‚РѕРіРѕ РѕС‚РІРµС‚Р°:
     public String getTextFromSixthAnswer(){
         String actualTextFromFirstAnswer = driver.findElement(sixthAnswer).getText();
         return actualTextFromFirstAnswer;
     }
-    // метод - дождаться ожидаемого текста в поле Ответ (без метода иногда не срабатывает Тест для chrome)
+    // РјРµС‚РѕРґ - РґРѕР¶РґР°С‚СЊСЃСЏ РѕР¶РёРґР°РµРјРѕРіРѕ С‚РµРєСЃС‚Р° РІ РїРѕР»Рµ РћС‚РІРµС‚ (Р±РµР· РјРµС‚РѕРґР° РёРЅРѕРіРґР° РЅРµ СЃСЂР°Р±Р°С‚С‹РІР°РµС‚ РўРµСЃС‚ РґР»СЏ chrome)
     public MainPageImportantQuestionsSection waitForFirstAnswer(String answer) {
         new WebDriverWait(driver, Duration.ofSeconds(3)).until(ExpectedConditions.textToBePresentInElementLocated(firstAnswer, answer));
         return this;

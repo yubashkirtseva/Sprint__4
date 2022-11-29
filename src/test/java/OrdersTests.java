@@ -37,93 +37,93 @@ public class OrdersTests {
         this.comment = comment;
     }
 
-    //Тестовые данные
+    //РўРµСЃС‚РѕРІС‹Рµ РґР°РЅРЅС‹Рµ
     @Parameterized.Parameters
     public static Object[][] getCredentials() {
         return new Object[][]{
-                {"Иван", "Иваныч", "Заневский проспект, 1", "Сокольники", "+79998887766", "12.12.2022", 2, 2, "Позвонить за час"},
-                {"Брюс Ли", "Чан", "Красная площадь", "Китай-город", "89997779988", "12.01.2023", 4, 1, ""},
+                {"РРІР°РЅ", "РРІР°РЅС‹С‡", "Р—Р°РЅРµРІСЃРєРёР№ РїСЂРѕСЃРїРµРєС‚, 1", "РЎРѕРєРѕР»СЊРЅРёРєРё", "+79998887766", "12.12.2022", 2, 2, "РџРѕР·РІРѕРЅРёС‚СЊ Р·Р° С‡Р°СЃ"},
+                {"Р‘СЂСЋСЃ Р›Рё", "Р§Р°РЅ", "РљСЂР°СЃРЅР°СЏ РїР»РѕС‰Р°РґСЊ", "РљРёС‚Р°Р№-РіРѕСЂРѕРґ", "89997779988", "12.01.2023", 4, 1, ""},
         };
     }
     private WebDriver driver;
 
         /*
-    3-ий сценарий
-    Используется браузер Google Chrome
-    Шаги
-    1. перейти на сайт https://qa-scooter.praktikum-services.ru/
-    2. кликнуть кнопку "Заказать" вверху страницы
-    3. заполнить необходимые поля в разделах информация о клиенте, информация об аренде
-    4. кликнуть кнопку "Заказать"
-    5. проверить, что текст в информационном сообщении об успешном заказе соответствует ожидаемому
+    3-РёР№ СЃС†РµРЅР°СЂРёР№
+    РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ Р±СЂР°СѓР·РµСЂ Google Chrome
+    РЁР°РіРё
+    1. РїРµСЂРµР№С‚Рё РЅР° СЃР°Р№С‚ https://qa-scooter.praktikum-services.ru/
+    2. РєР»РёРєРЅСѓС‚СЊ РєРЅРѕРїРєСѓ "Р—Р°РєР°Р·Р°С‚СЊ" РІРІРµСЂС…Сѓ СЃС‚СЂР°РЅРёС†С‹
+    3. Р·Р°РїРѕР»РЅРёС‚СЊ РЅРµРѕР±С…РѕРґРёРјС‹Рµ РїРѕР»СЏ РІ СЂР°Р·РґРµР»Р°С… РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ РєР»РёРµРЅС‚Рµ, РёРЅС„РѕСЂРјР°С†РёСЏ РѕР± Р°СЂРµРЅРґРµ
+    4. РєР»РёРєРЅСѓС‚СЊ РєРЅРѕРїРєСѓ "Р—Р°РєР°Р·Р°С‚СЊ"
+    5. РїСЂРѕРІРµСЂРёС‚СЊ, С‡С‚Рѕ С‚РµРєСЃС‚ РІ РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅРѕРј СЃРѕРѕР±С‰РµРЅРёРё РѕР± СѓСЃРїРµС€РЅРѕРј Р·Р°РєР°Р·Рµ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ РѕР¶РёРґР°РµРјРѕРјСѓ
     */
 
     @Test
     public void checkOrderingPositiveProcessChrome() {
-        //настройка браузера
+        //РЅР°СЃС‚СЂРѕР№РєР° Р±СЂР°СѓР·РµСЂР°
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        // переход на страницу тестового приложения
+        // РїРµСЂРµС…РѕРґ РЅР° СЃС‚СЂР°РЅРёС†Сѓ С‚РµСЃС‚РѕРІРѕРіРѕ РїСЂРёР»РѕР¶РµРЅРёСЏ
         driver.get("https://qa-scooter.praktikum-services.ru/");
-        // создать объект главной страницы
+        // СЃРѕР·РґР°С‚СЊ РѕР±СЉРµРєС‚ РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†С‹
         MainPage objMainPage = new MainPage(driver);
-        // вызвать методы
+        // РІС‹Р·РІР°С‚СЊ РјРµС‚РѕРґС‹
         objMainPage.clickOnTopOrderBtn();
-        // создать объект страницы с данными клиента
+        // СЃРѕР·РґР°С‚СЊ РѕР±СЉРµРєС‚ СЃС‚СЂР°РЅРёС†С‹ СЃ РґР°РЅРЅС‹РјРё РєР»РёРµРЅС‚Р°
         CustomerDataPage objCustomerDataPage = new CustomerDataPage(driver);
-        // вызвать методы, передать тестовые данные
+        // РІС‹Р·РІР°С‚СЊ РјРµС‚РѕРґС‹, РїРµСЂРµРґР°С‚СЊ С‚РµСЃС‚РѕРІС‹Рµ РґР°РЅРЅС‹Рµ
         objCustomerDataPage.enterCustomerData(name, surname, deliveryAddress, metroStation, phoneNumber);
-        // создать объект страницы с данными об аренде
+        // СЃРѕР·РґР°С‚СЊ РѕР±СЉРµРєС‚ СЃС‚СЂР°РЅРёС†С‹ СЃ РґР°РЅРЅС‹РјРё РѕР± Р°СЂРµРЅРґРµ
         RentDataPage objRentDataPage = new RentDataPage(driver);
-        // вызвать методы, передать тестовые данные
+        // РІС‹Р·РІР°С‚СЊ РјРµС‚РѕРґС‹, РїРµСЂРµРґР°С‚СЊ С‚РµСЃС‚РѕРІС‹Рµ РґР°РЅРЅС‹Рµ
         objRentDataPage.enterRentData(deliveryData, rentPeriodVariant, colorVariant, comment)
                        .confirmOrder();
-        // задать ожидаемый результат
-        String expectedTextFromOrderHasBeenCreatedInfo = "Заказ оформлен";
-        // сравнить ожидаемый и актуальный результат
-        Assert.assertEquals("Текст не совпадает", expectedTextFromOrderHasBeenCreatedInfo, objRentDataPage.getTextFromOrderHasBeenCreatedInfo());
+        // Р·Р°РґР°С‚СЊ РѕР¶РёРґР°РµРјС‹Р№ СЂРµР·СѓР»СЊС‚Р°С‚
+        String expectedTextFromOrderHasBeenCreatedInfo = "Р—Р°РєР°Р· РѕС„РѕСЂРјР»РµРЅ";
+        // СЃСЂР°РІРЅРёС‚СЊ РѕР¶РёРґР°РµРјС‹Р№ Рё Р°РєС‚СѓР°Р»СЊРЅС‹Р№ СЂРµР·СѓР»СЊС‚Р°С‚
+        Assert.assertEquals("РўРµРєСЃС‚ РЅРµ СЃРѕРІРїР°РґР°РµС‚", expectedTextFromOrderHasBeenCreatedInfo, objRentDataPage.getTextFromOrderHasBeenCreatedInfo());
     }
 
     /*
-    4-ый сценарий
-    Используется браузер Mozilla Firefox
-    Шаги
-    1. перейти на сайт https://qa-scooter.praktikum-services.ru/
-    2. кликнуть кнопку "Заказать" внизу страницы
-    3. заполнить необходимые поля в разделах информация о клиенте, информация об аренде
-    4. кликнуть кнопку "Заказать"
-    5. проверить, что текст в информационном сообщении об успешном заказе соответствует ожидаемому
+    4-С‹Р№ СЃС†РµРЅР°СЂРёР№
+    РСЃРїРѕР»СЊР·СѓРµС‚СЃСЏ Р±СЂР°СѓР·РµСЂ Mozilla Firefox
+    РЁР°РіРё
+    1. РїРµСЂРµР№С‚Рё РЅР° СЃР°Р№С‚ https://qa-scooter.praktikum-services.ru/
+    2. РєР»РёРєРЅСѓС‚СЊ РєРЅРѕРїРєСѓ "Р—Р°РєР°Р·Р°С‚СЊ" РІРЅРёР·Сѓ СЃС‚СЂР°РЅРёС†С‹
+    3. Р·Р°РїРѕР»РЅРёС‚СЊ РЅРµРѕР±С…РѕРґРёРјС‹Рµ РїРѕР»СЏ РІ СЂР°Р·РґРµР»Р°С… РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ РєР»РёРµРЅС‚Рµ, РёРЅС„РѕСЂРјР°С†РёСЏ РѕР± Р°СЂРµРЅРґРµ
+    4. РєР»РёРєРЅСѓС‚СЊ РєРЅРѕРїРєСѓ "Р—Р°РєР°Р·Р°С‚СЊ"
+    5. РїСЂРѕРІРµСЂРёС‚СЊ, С‡С‚Рѕ С‚РµРєСЃС‚ РІ РёРЅС„РѕСЂРјР°С†РёРѕРЅРЅРѕРј СЃРѕРѕР±С‰РµРЅРёРё РѕР± СѓСЃРїРµС€РЅРѕРј Р·Р°РєР°Р·Рµ СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓРµС‚ РѕР¶РёРґР°РµРјРѕРјСѓ
     */
 
     @Test
     public void checkOrderingPositiveProcessFireFox() {
-        //настройка браузера
+        //РЅР°СЃС‚СЂРѕР№РєР° Р±СЂР°СѓР·РµСЂР°
         WebDriverManager.firefoxdriver().setup();
         driver = new FirefoxDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        // переход на страницу тестового приложения
+        // РїРµСЂРµС…РѕРґ РЅР° СЃС‚СЂР°РЅРёС†Сѓ С‚РµСЃС‚РѕРІРѕРіРѕ РїСЂРёР»РѕР¶РµРЅРёСЏ
         driver.get("https://qa-scooter.praktikum-services.ru/");
-        // создать объект главной страницы
+        // СЃРѕР·РґР°С‚СЊ РѕР±СЉРµРєС‚ РіР»Р°РІРЅРѕР№ СЃС‚СЂР°РЅРёС†С‹
         MainPage objMainPage = new MainPage(driver);
-        // вызвать методы
+        // РІС‹Р·РІР°С‚СЊ РјРµС‚РѕРґС‹
         objMainPage.scrollToBottomOrderBtn()
                 .clickOnBottomOrderBtn();
-        // создать объект страницы с данными клиента
+        // СЃРѕР·РґР°С‚СЊ РѕР±СЉРµРєС‚ СЃС‚СЂР°РЅРёС†С‹ СЃ РґР°РЅРЅС‹РјРё РєР»РёРµРЅС‚Р°
         CustomerDataPage objCustomerDataPage = new CustomerDataPage(driver);
-        // вызвать методы, передать тестовые данные
+        // РІС‹Р·РІР°С‚СЊ РјРµС‚РѕРґС‹, РїРµСЂРµРґР°С‚СЊ С‚РµСЃС‚РѕРІС‹Рµ РґР°РЅРЅС‹Рµ
         objCustomerDataPage.enterCustomerData(name, surname, deliveryAddress, metroStation, phoneNumber);
-        // создать объект страницы с данными об аренде
+        // СЃРѕР·РґР°С‚СЊ РѕР±СЉРµРєС‚ СЃС‚СЂР°РЅРёС†С‹ СЃ РґР°РЅРЅС‹РјРё РѕР± Р°СЂРµРЅРґРµ
         RentDataPage objRentDataPage = new RentDataPage(driver);
-        // вызвать методы, передать тестовые данные
+        // РІС‹Р·РІР°С‚СЊ РјРµС‚РѕРґС‹, РїРµСЂРµРґР°С‚СЊ С‚РµСЃС‚РѕРІС‹Рµ РґР°РЅРЅС‹Рµ
         objRentDataPage.enterRentData(deliveryData, rentPeriodVariant, colorVariant, comment)
                        .confirmOrder();
-        // задать ожидаемый результат
-        String expectedTextFromOrderHasBeenCreatedInfo = "Заказ оформлен";
-        // сравнить ожидаемый и актуальный результат
-        Assert.assertEquals("Текст не совпадает", expectedTextFromOrderHasBeenCreatedInfo, objRentDataPage.getTextFromOrderHasBeenCreatedInfo());
+        // Р·Р°РґР°С‚СЊ РѕР¶РёРґР°РµРјС‹Р№ СЂРµР·СѓР»СЊС‚Р°С‚
+        String expectedTextFromOrderHasBeenCreatedInfo = "Р—Р°РєР°Р· РѕС„РѕСЂРјР»РµРЅ";
+        // СЃСЂР°РІРЅРёС‚СЊ РѕР¶РёРґР°РµРјС‹Р№ Рё Р°РєС‚СѓР°Р»СЊРЅС‹Р№ СЂРµР·СѓР»СЊС‚Р°С‚
+        Assert.assertEquals("РўРµРєСЃС‚ РЅРµ СЃРѕРІРїР°РґР°РµС‚", expectedTextFromOrderHasBeenCreatedInfo, objRentDataPage.getTextFromOrderHasBeenCreatedInfo());
     }
 
     @After

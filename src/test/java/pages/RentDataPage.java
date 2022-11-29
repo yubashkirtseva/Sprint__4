@@ -8,49 +8,49 @@ import org.openqa.selenium.WebDriver;
 public class RentDataPage {
     private WebDriver driver;
 
-    // локатор поля даты доставки:
-    private By deliveryDateField = By.xpath(".//input[@placeholder='* Когда привезти самокат']");
-    // локатор поля периода аренды:
+    // Р»РѕРєР°С‚РѕСЂ РїРѕР»СЏ РґР°С‚С‹ РґРѕСЃС‚Р°РІРєРё:
+    private By deliveryDateField = By.xpath(".//input[@placeholder='* РљРѕРіРґР° РїСЂРёРІРµР·С‚Рё СЃР°РјРѕРєР°С‚']");
+    // Р»РѕРєР°С‚РѕСЂ РїРѕР»СЏ РїРµСЂРёРѕРґР° Р°СЂРµРЅРґС‹:
     private By rentPeriodField = By.xpath(".//div[@class='Dropdown-placeholder']");
-    // локатор поля комментария:
+    // Р»РѕРєР°С‚РѕСЂ РїРѕР»СЏ РєРѕРјРјРµРЅС‚Р°СЂРёСЏ:
     private By commentField = By.xpath(".//input[@class='Input_Input__1iN_Z Input_Responsible__1jDKN']");
-    // локатор кнопки "Заказать":
+    // Р»РѕРєР°С‚РѕСЂ РєРЅРѕРїРєРё "Р—Р°РєР°Р·Р°С‚СЊ":
     private By orderBtn = By.xpath(".//button[@class='Button_Button__ra12g Button_Middle__1CSJM']");
-    // локатор кнопки подтверждения заказа:
-    private By confirmOrderBtn = By.xpath(".//button[text()='Да']");
-    // локатор блока с информацией о создании заказа:
+    // Р»РѕРєР°С‚РѕСЂ РєРЅРѕРїРєРё РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ Р·Р°РєР°Р·Р°:
+    private By confirmOrderBtn = By.xpath(".//button[text()='Р”Р°']");
+    // Р»РѕРєР°С‚РѕСЂ Р±Р»РѕРєР° СЃ РёРЅС„РѕСЂРјР°С†РёРµР№ Рѕ СЃРѕР·РґР°РЅРёРё Р·Р°РєР°Р·Р°:
     private By orderHasBeenCreatedInfo = By.xpath(".//div[@class='Order_ModalHeader__3FDaJ']");
 
-    // конструктор класса:
+    // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°:
     public RentDataPage(WebDriver driver){
         this.driver = driver;
     }
 
-    // метод - ввести дату доставки
+    // РјРµС‚РѕРґ - РІРІРµСЃС‚Рё РґР°С‚Сѓ РґРѕСЃС‚Р°РІРєРё
     public void enterDeliveryData(String deliveryData){
         driver.findElement(deliveryDateField).sendKeys(deliveryData + Keys.ENTER);
     }
-    // метод - кликнуть на поле период аренды для вызова выпадающего списка
+    // РјРµС‚РѕРґ - РєР»РёРєРЅСѓС‚СЊ РЅР° РїРѕР»Рµ РїРµСЂРёРѕРґ Р°СЂРµРЅРґС‹ РґР»СЏ РІС‹Р·РѕРІР° РІС‹РїР°РґР°СЋС‰РµРіРѕ СЃРїРёСЃРєР°
     public void clickRentPeriodField(){
         driver.findElement(rentPeriodField).click();
     }
-    // метод - выбрать период аренды
+    // РјРµС‚РѕРґ - РІС‹Р±СЂР°С‚СЊ РїРµСЂРёРѕРґ Р°СЂРµРЅРґС‹
     public void clickRentPeriod(int rentPeriodVariant){
         driver.findElement(By.xpath(".//div[@class='Dropdown-option']" + "[" + rentPeriodVariant + "]")).click();
     }
-    // метод - выбрать цвет самоката
+    // РјРµС‚РѕРґ - РІС‹Р±СЂР°С‚СЊ С†РІРµС‚ СЃР°РјРѕРєР°С‚Р°
     public void chooseColor(int colorVariant){
         driver.findElement(By.xpath(".//label[@class='Checkbox_Label__3wxSf'][" + colorVariant + "]/input")).click();
     }
-    // метод - ввести комментарий
+    // РјРµС‚РѕРґ - РІРІРµСЃС‚Рё РєРѕРјРјРµРЅС‚Р°СЂРёР№
     public void enterComment(String comment){
         driver.findElement(commentField).sendKeys(comment);
     }
-    // метод - нажать кнопку "Заказать":
+    // РјРµС‚РѕРґ - РЅР°Р¶Р°С‚СЊ РєРЅРѕРїРєСѓ "Р—Р°РєР°Р·Р°С‚СЊ":
     public void order(){
         driver.findElement(orderBtn).click();
     }
-    // объединенный метод заполнения данных об аренде
+    // РѕР±СЉРµРґРёРЅРµРЅРЅС‹Р№ РјРµС‚РѕРґ Р·Р°РїРѕР»РЅРµРЅРёСЏ РґР°РЅРЅС‹С… РѕР± Р°СЂРµРЅРґРµ
     public RentDataPage enterRentData(String deliveryData, int rentPeriodVariant, int colorVariant, String comment){
         enterDeliveryData(deliveryData);
         clickRentPeriodField();
@@ -61,12 +61,12 @@ public class RentDataPage {
         return this;
     }
 
-    // метод - нажать кнопку подтверждения заказа:
+    // РјРµС‚РѕРґ - РЅР°Р¶Р°С‚СЊ РєРЅРѕРїРєСѓ РїРѕРґС‚РІРµСЂР¶РґРµРЅРёСЏ Р·Р°РєР°Р·Р°:
     public RentDataPage confirmOrder(){
         driver.findElement(confirmOrderBtn).click();
         return this;
     }
-    // получить текст из блока с информацией о создании заказа:
+    // РїРѕР»СѓС‡РёС‚СЊ С‚РµРєСЃС‚ РёР· Р±Р»РѕРєР° СЃ РёРЅС„РѕСЂРјР°С†РёРµР№ Рѕ СЃРѕР·РґР°РЅРёРё Р·Р°РєР°Р·Р°:
     public String getTextFromOrderHasBeenCreatedInfo(){
         String textFromOrderHasBeenCreatedInfo = driver.findElement(orderHasBeenCreatedInfo).getText();
         String actualTextFromFirstAnswer = textFromOrderHasBeenCreatedInfo.substring(0, 14);

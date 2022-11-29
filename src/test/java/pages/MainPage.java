@@ -7,27 +7,27 @@ import org.openqa.selenium.WebElement;
 
 public class MainPage {
     private WebDriver driver;
-    // локатор кнопки "Заказать" вверху страницы:
+    // Р»РѕРєР°С‚РѕСЂ РєРЅРѕРїРєРё "Р—Р°РєР°Р·Р°С‚СЊ" РІРІРµСЂС…Сѓ СЃС‚СЂР°РЅРёС†С‹:
     private By topOrderBtn = By.xpath(".//button[@class='Button_Button__ra12g']");
-    // локатор кнопки "Заказать" внизу страницы:
+    // Р»РѕРєР°С‚РѕСЂ РєРЅРѕРїРєРё "Р—Р°РєР°Р·Р°С‚СЊ" РІРЅРёР·Сѓ СЃС‚СЂР°РЅРёС†С‹:
     private By bottomOrderBtn = By.xpath(".//button[@class='Button_Button__ra12g Button_Middle__1CSJM']");
-    // конструктор класса:
+    // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°:
     public MainPage(WebDriver driver){
         this.driver = driver;
     }
-    // метод - кликнуть по верхней кнопке "Заказать":
+    // РјРµС‚РѕРґ - РєР»РёРєРЅСѓС‚СЊ РїРѕ РІРµСЂС…РЅРµР№ РєРЅРѕРїРєРµ "Р—Р°РєР°Р·Р°С‚СЊ":
     public MainPage clickOnTopOrderBtn(){
         driver.findElement(topOrderBtn).click();
         return this;
     }
-    // метод - проскролить страницу до нижней кнопки "Заказать":
+    // РјРµС‚РѕРґ - РїСЂРѕСЃРєСЂРѕР»РёС‚СЊ СЃС‚СЂР°РЅРёС†Сѓ РґРѕ РЅРёР¶РЅРµР№ РєРЅРѕРїРєРё "Р—Р°РєР°Р·Р°С‚СЊ":
     public MainPage scrollToBottomOrderBtn(){
         JavascriptExecutor js = (JavascriptExecutor) driver;
         WebElement bottomOrderBtn = driver.findElement(By.xpath(".//button[@class='Button_Button__ra12g Button_Middle__1CSJM']"));
         js.executeScript("arguments[0].scrollIntoView();", bottomOrderBtn);
         return this;
     }
-    // метод - кликнуть по нижней кнопке "Заказать":
+    // РјРµС‚РѕРґ - РєР»РёРєРЅСѓС‚СЊ РїРѕ РЅРёР¶РЅРµР№ РєРЅРѕРїРєРµ "Р—Р°РєР°Р·Р°С‚СЊ":
     public MainPage clickOnBottomOrderBtn(){
         driver.findElement(bottomOrderBtn).click();
         return this;

@@ -5,55 +5,55 @@ import org.openqa.selenium.WebDriver;
 
 public class CustomerDataPage {
     private WebDriver driver;
-    // локатор поля "Имя":
-    private By nameField = By.xpath(".//input[@placeholder='* Имя']");
-    // локатор поля "Фамилия":
-    private By surnameField = By.xpath(".//input[@placeholder='* Фамилия']");
-    // локатор поля "Адрес":
-    private By deliveryAddressField = By.xpath(".//input[@placeholder='* Адрес: куда привезти заказ']");
-    // локатор поля "Метро":
-    private By metroStationField = By.xpath(".//input[@placeholder='* Станция метро']");
-    // локатор выпадающего списка "Метро":
+    // Р»РѕРєР°С‚РѕСЂ РїРѕР»СЏ "РРјСЏ":
+    private By nameField = By.xpath(".//input[@placeholder='* РРјСЏ']");
+    // Р»РѕРєР°С‚РѕСЂ РїРѕР»СЏ "Р¤Р°РјРёР»РёСЏ":
+    private By surnameField = By.xpath(".//input[@placeholder='* Р¤Р°РјРёР»РёСЏ']");
+    // Р»РѕРєР°С‚РѕСЂ РїРѕР»СЏ "РђРґСЂРµСЃ":
+    private By deliveryAddressField = By.xpath(".//input[@placeholder='* РђРґСЂРµСЃ: РєСѓРґР° РїСЂРёРІРµР·С‚Рё Р·Р°РєР°Р·']");
+    // Р»РѕРєР°С‚РѕСЂ РїРѕР»СЏ "РњРµС‚СЂРѕ":
+    private By metroStationField = By.xpath(".//input[@placeholder='* РЎС‚Р°РЅС†РёСЏ РјРµС‚СЂРѕ']");
+    // Р»РѕРєР°С‚РѕСЂ РІС‹РїР°РґР°СЋС‰РµРіРѕ СЃРїРёСЃРєР° "РњРµС‚СЂРѕ":
     private By dropdownlist = By.xpath(".//div[@class='select-search__select']");
-    // локатор поля "Телефон":
-    private By phoneNumberField = By.xpath(".//input[@placeholder='* Телефон: на него позвонит курьер']");
-    // локатор кнопки "Продолжить":
+    // Р»РѕРєР°С‚РѕСЂ РїРѕР»СЏ "РўРµР»РµС„РѕРЅ":
+    private By phoneNumberField = By.xpath(".//input[@placeholder='* РўРµР»РµС„РѕРЅ: РЅР° РЅРµРіРѕ РїРѕР·РІРѕРЅРёС‚ РєСѓСЂСЊРµСЂ']");
+    // Р»РѕРєР°С‚РѕСЂ РєРЅРѕРїРєРё "РџСЂРѕРґРѕР»Р¶РёС‚СЊ":
     private By continueBtn = By.xpath(".//button[@class='Button_Button__ra12g Button_Middle__1CSJM']");
 
-    // конструктор класса:
+    // РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РєР»Р°СЃСЃР°:
     public CustomerDataPage(WebDriver driver){
         this.driver = driver;
     }
 
-    // метод - ввести имя:
+    // РјРµС‚РѕРґ - РІРІРµСЃС‚Рё РёРјСЏ:
     public void enterName(String name){
         driver.findElement(nameField).sendKeys(name);
     }
-    // метод - ввести фамилию:
+    // РјРµС‚РѕРґ - РІРІРµСЃС‚Рё С„Р°РјРёР»РёСЋ:
     public void enterSurname(String surname){
         driver.findElement(surnameField).sendKeys(surname);
     }
-    // метод - ввести адрес:
+    // РјРµС‚РѕРґ - РІРІРµСЃС‚Рё Р°РґСЂРµСЃ:
     public void enterDeliveryAddress(String deliveryAddress){
         driver.findElement(deliveryAddressField).sendKeys(deliveryAddress);
     }
-    // метод - ввести метро:
+    // РјРµС‚РѕРґ - РІРІРµСЃС‚Рё РјРµС‚СЂРѕ:
     public void enterMetroStation(String metroStation){
         driver.findElement(metroStationField).sendKeys(metroStation);
     }
-    // метод - кликнуть на метро в выпадающем списке:
+    // РјРµС‚РѕРґ - РєР»РёРєРЅСѓС‚СЊ РЅР° РјРµС‚СЂРѕ РІ РІС‹РїР°РґР°СЋС‰РµРј СЃРїРёСЃРєРµ:
     public void clickDropdownlist(){
         driver.findElement(dropdownlist).click();
     }
-    // метод - ввести телефон
+    // РјРµС‚РѕРґ - РІРІРµСЃС‚Рё С‚РµР»РµС„РѕРЅ
     public void enterPhoneNumber(String phoneNumber){
         driver.findElement(phoneNumberField).sendKeys(phoneNumber);
     }
-    // метод - нажать на кнопку "Продолжить":
+    // РјРµС‚РѕРґ - РЅР°Р¶Р°С‚СЊ РЅР° РєРЅРѕРїРєСѓ "РџСЂРѕРґРѕР»Р¶РёС‚СЊ":
     public void clickContinueBtn(){
         driver.findElement(continueBtn).click();
     }
-    // объединенный метод заполнения данных о клиенте
+    // РѕР±СЉРµРґРёРЅРµРЅРЅС‹Р№ РјРµС‚РѕРґ Р·Р°РїРѕР»РЅРµРЅРёСЏ РґР°РЅРЅС‹С… Рѕ РєР»РёРµРЅС‚Рµ
     public void enterCustomerData(String name, String surname, String deliveryAddress, String metroStation, String phoneNumber){
         enterName(name);
         enterSurname(surname);
